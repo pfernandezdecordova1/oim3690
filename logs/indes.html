@@ -1,0 +1,147 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Drivers - Formula 1 Legend</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: #000;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #dc0000;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            color: #dc0000;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .drivers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .driver-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #dc0000;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .driver-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(220, 0, 0, 0.4);
+        }
+        
+        .driver-card h3 {
+            color: #dc0000;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .driver-card p {
+            color: #ddd;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #000;
+            border-top: 3px solid #dc0000;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏎️ F1 DRIVERS</h1>
+        <p>Celebrating the Greatest Drivers in Formula 1 History</p>
+    </header>
+    
+    <div class="container">
+        <div class="drivers-grid">
+            <div class="driver-card">
+                <h3>Lewis Hamilton</h3>
+                <p><strong>Team:</strong> Mercedes</p>
+                <p><strong>Nationality:</strong> British</p>
+                <p><strong>Championships:</strong> 7</p>
+                <p>The most successful driver in F1 history with record-breaking achievements.</p>
+            </div>
+            
+            <div class="driver-card">
+                <h3>Max Verstappen</h3>
+                <p><strong>Team:</strong> Red Bull Racing</p>
+                <p><strong>Nationality:</strong> Dutch</p>
+                <p><strong>Championships:</strong> 4</p>
+                <p>Dominant force of the current era with incredible speed and consistency.</p>
+            </div>
+            
+            <div class="driver-card">
+                <h3>Michael Schumacher</h3>
+                <p><strong>Team:</strong> Ferrari</p>
+                <p><strong>Nationality:</strong> German</p>
+                <p><strong>Championships:</strong> 7</p>
+                <p>Legend of the sport who set many records throughout his career.</p>
+            </div>
+            
+            <div class="driver-card">
+                <h3>Ayrton Senna</h3>
+                <p><strong>Team:</strong> McLaren</p>
+                <p><strong>Nationality:</strong> Brazilian</p>
+                <p><strong>Championships:</strong> 3</p>
+                <p>One of the greatest drivers ever, known for his intense racing style.</p>
+            </div>
+            
+            <div class="driver-card">
+                <h3>Juan Manuel Fangio</h3>
+                <p><strong>Team:</strong> Multiple</p>
+                <p><strong>Nationality:</strong> Argentine</p>
+                <p><strong>Championships:</strong> 5</p>
+                <p>Pioneer of F1 who dominated the early years of the sport.</p>
+            </div>
+            
+            <div class="driver-card">
+                <h3>Alain Prost</h3>
+                <p><strong>Team:</strong> McLaren/Ferrari</p>
+                <p><strong>Nationality:</strong> French</p>
+                <p><strong>Championships:</strong> 4</p>
+                <p>The "Professor" known for his strategic racing intelligence.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 F1 Drivers Website. Celebrating Formula 1 Excellence.</p>
+    </footer>
+</body>
+</html> 
