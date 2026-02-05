@@ -17,4 +17,23 @@
 7. we went over HTML file structure. ANd questions from s05.   
         Body is where content starts in the web. Patterns? 
 
-8.  You can contron, shift, p and use prettier to format the code. ALt, Shift and F to format code. 
+8.  You can contron, shift, p and use prettier to format the code. 
+    ALt, Shift and F to format code. 
+9. html allows code to be added to learning logs.
+10. html is always from top/down, linear way. How can we arrange the layout? 
+11. It dosent change anything if lines are intended, it is easier to read. 
+12. in html is not a program language, its a mapping language.
+13. > are called tags. 
+14. full name of html is hyper text markup language.
+
+15.  I started to structure the s06 demo without AI
+ - H1 and H2 is not only size its the relationship. 
+ - htm:5 tab to create basic structure. 
+ - <a>: this is used to anchor a link, ex s06 babson college demo. 
+- img: to add image, and go to the image, open image in new tab, copy link address, paste in src.
+- alt if for disability people, it reades the quick description of the image.
+- Alt Z so the code fits the screen.
+- to modify with copilot, select the part, ctrl i and tell him what to change. 
+- ctrl, shift and i opens copilot in the side. 
+
+
