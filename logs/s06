@@ -1,6 +1,11 @@
 
 1. HTML, CSS and Java are the tree principal languages used to create web pages and web applications.
 2. HTML is used to structure the content on the web pages.
-3. CSS  is used to style and layout the web pages.
-4. Java is a programming language used to create dynamic and interactive features on web pages.
-5. 
+
+3. If a friends website is broken, what do we do?
+    - Inspect first
+    - use the pointer to select elements on page
+    - find ref
+    - then i ask chat to solve the specific issue.
+    - refresh so it connects, 404 is file not found
+
