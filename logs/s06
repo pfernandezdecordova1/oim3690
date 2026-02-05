@@ -13,4 +13,8 @@
 5. to change anything, you can temporary change that. A lot of fakenews come from this. The issue is they are not permanent. 
 6. Font: how can i find the font used? 
     - Inspect, header (you can click it), look for font-family and you can change it temporarily. 
-7. 
+
+7. we went over HTML file structure. ANd questions from s05.   
+        Body is where content starts in the web. Patterns? 
+
+8.  You can contron, shift, p and use prettier to format the code. ALt, Shift and F to format code. 
