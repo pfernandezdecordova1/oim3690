@@ -7,6 +7,7 @@ Tuesday Class
 - I added to s07 tags created by AI to learn how to use them.
 - <br> is used to add a breaker to move the text to the next line.
 - <hr> is to create a horizontal line. 
+- div is used as a container for adding text, evidence. 
 - 
 
 ## Code im proud of 
@@ -19,6 +20,14 @@ The link did was linking to a file instead of the external website.
 ## Ai Usage? 
 To answer some of the questions i Had during class. 
 Adding Tags to s07. Prompt: I am a biginner and can you add a code with different tags so i can play with them. 
+
+## I gave him this prompt to improve my about me website: 
+
+check the spelling in the profile section. Also at the end add a message that says: Thank You For Your Time! 
+
+Also i need you to add one picture about padel as a sport: you can use this image: https://i.natgeofe.com/n/68f69f0a-9ead-4fda-a9d4-494df610501b/GettyImages-1423558556.jpg
+
+Furthermore under this image add this paragraph: Keep the spaces and everything so it looks organized. And i added the text so he could copy past it. 
 
 ## Questions? 
 a href? Answer from AI: It tells the browser where the link should go when someone clicks it.
