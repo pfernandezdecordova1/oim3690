@@ -1,0 +1,26 @@
+:root {
+	--babson-green: #007a3d; /* Babson green (approx) */
+	--light-green: #eef8ef; /* subtle light green background */
+	--navy: #0b2340; /* navy for paragraph text */
+}
+
+/* Page background */
+body {
+	background: var(--light-green);
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Heading in Babson green */
+h1, .hq {
+	color: var(--babson-green);
+}
+
+/* Paragraphs use navy */
+p {
+	color: var(--navy);
+}
+
+/* Small layout helpers */
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
