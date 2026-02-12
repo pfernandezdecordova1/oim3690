@@ -1,41 +1,1440 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Page</title>
-</head>
-<body>
-  <header>
-    <h1>Welcome</h1>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>F1 Drivers Hub — Legends, History & Champions</title>
+    <meta
+      name="description"
+      content="A modern F1 drivers hub: legends, history timeline, and the latest completed championship top 2."
+    />
+    <style>
+      :root {
+        --bg0: #06060c;
+        --bg1: #0b0b14;
+        --panel: rgba(255, 255, 255, 0.08);
+        --panel2: rgba(255, 255, 255, 0.1);
+        --border: rgba(255, 255, 255, 0.12);
+        --text: #ffffff;
+        --muted: #cfcfcf;
+        --muted2: #a7a7a7;
+        --red: #dc0000;
+        --shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+        --shadow2: 0 10px 24px rgba(220, 0, 0, 0.2);
+        --radius: 16px;
+        --radius2: 22px;
+      }
 
-  <main>
-    <section id="home">
-      <h2>Home</h2>
-      <p>This is the home section.</p>
-    </section>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(
+            circle at 20% 10%,
+            rgba(220, 0, 0, 0.22),
+            transparent 42%
+          ),
+          radial-gradient(
+            circle at 70% 15%,
+            rgba(0, 140, 255, 0.1),
+            transparent 40%
+          ),
+          linear-gradient(135deg, #0a0a16 0%, #0a1024 45%, #070711 100%);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
 
-    <section id="about">
-      <h2>About</h2>
-      <p>This is the about section.</p>
-    </section>
+      /* ===== Intro animation (your idea, polished) ===== */
+      .intro {
+        position: fixed;
+        inset: 0;
+        z-index: 3000;
+        background:
+          radial-gradient(
+            circle at 30% 20%,
+            rgba(220, 0, 0, 0.25),
+            transparent 45%
+          ),
+          linear-gradient(135deg, #05050a, #0b0b14 55%, #06060c);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+      .intro.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 420ms ease;
+      }
+      .intro-inner {
+        width: min(980px, 92vw);
+        padding: 26px;
+      }
+      .intro-title {
+        text-align: center;
+        margin-bottom: 18px;
+      }
+      .intro-title h2 {
+        font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+        letter-spacing: 0.6px;
+      }
+      .intro-title h2 span {
+        color: var(--red);
+      }
+      .intro-title p {
+        color: var(--muted);
+        margin-top: 6px;
+        font-size: 0.98rem;
+      }
+      .lights {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 18px 0 26px;
+      }
+      .light {
+        width: 14px;
+        height: 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 0 0 rgba(220, 0, 0, 0);
+        animation: lightOn 1.6s ease forwards;
+      }
+      .light:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .light:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+      .light:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      .light:nth-child(4) {
+        animation-delay: 0.55s;
+      }
+      .light:nth-child(5) {
+        animation-delay: 0.7s;
+      }
+      @keyframes lightOn {
+        0% {
+          background: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 0 0 rgba(220, 0, 0, 0);
+        }
+        60% {
+          background: rgba(220, 0, 0, 0.95);
+          box-shadow: 0 0 18px rgba(220, 0, 0, 0.45);
+        }
+        100% {
+          background: rgba(220, 0, 0, 0.95);
+          box-shadow: 0 0 18px rgba(220, 0, 0, 0.45);
+        }
+      }
+      .track {
+        position: relative;
+        width: 100%;
+        height: 120px;
+        border-radius: 18px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.03)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+      }
+      .track::before {
+        content: "";
+        position: absolute;
+        left: -20%;
+        top: 56%;
+        width: 140%;
+        height: 2px;
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.18) 0 18px,
+          rgba(255, 255, 255, 0) 18px 36px
+        );
+        opacity: 0.7;
+        transform: translateY(-50%);
+      }
+      .car {
+        position: absolute;
+        left: -240px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 220px;
+        height: 64px;
+        animation: drive 1.9s cubic-bezier(0.25, 0.9, 0.2, 1) forwards;
+        animation-delay: 0.95s;
+        filter: drop-shadow(0 14px 16px rgba(0, 0, 0, 0.55));
+      }
+      @keyframes drive {
+        0% {
+          left: -240px;
+        }
+        100% {
+          left: calc(100% + 240px);
+        }
+      }
+      .car-body {
+        position: absolute;
+        left: 30px;
+        top: 20px;
+        width: 150px;
+        height: 24px;
+        border-radius: 14px;
+        background: linear-gradient(
+          90deg,
+          rgba(220, 0, 0, 0.95),
+          rgba(220, 0, 0, 0.75)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .car-nose {
+        position: absolute;
+        left: 0px;
+        top: 26px;
+        width: 54px;
+        height: 14px;
+        border-radius: 10px;
+        background: rgba(220, 0, 0, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .wing {
+        position: absolute;
+        left: 8px;
+        top: 18px;
+        width: 18px;
+        height: 26px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .cockpit {
+        position: absolute;
+        left: 92px;
+        top: 14px;
+        width: 36px;
+        height: 18px;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .rear {
+        position: absolute;
+        left: 168px;
+        top: 18px;
+        width: 36px;
+        height: 28px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .wheel {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #0a0a0a;
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        top: 42px;
+        animation: spin 0.25s linear infinite;
+      }
+      .wheel.front {
+        left: 40px;
+      }
+      .wheel.back {
+        left: 160px;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .intro-note {
+        text-align: center;
+        color: var(--muted2);
+        margin-top: 12px;
+        font-size: 0.92rem;
+        opacity: 0.9;
+      }
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>This is the contact section.</p>
-    </section>
-  </main>
+      /* ===== Top header + sticky nav ===== */
+      header {
+        position: relative;
+        background: rgba(0, 0, 0, 0.55);
+        border-bottom: 3px solid var(--red);
+        backdrop-filter: blur(10px);
+      }
+      .topbar {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 18px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 220px;
+      }
+      .logoMark {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        background: linear-gradient(
+          135deg,
+          rgba(220, 0, 0, 0.95),
+          rgba(220, 0, 0, 0.55)
+        );
+        box-shadow: 0 12px 24px rgba(220, 0, 0, 0.22);
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .brand h1 {
+        font-size: 1.2rem;
+        letter-spacing: 0.4px;
+        line-height: 1.15;
+      }
+      .brand h1 span {
+        color: var(--red);
+      }
+      .brand p {
+        color: var(--muted);
+        font-size: 0.92rem;
+        margin-top: 2px;
+      }
 
-  <footer>
-    <p>&copy; 2026 My Website. All rights reserved.</p>
-  </footer>
+      nav.desktop-nav {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      nav.desktop-nav a {
+        color: #e8e8e8;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 0.95rem;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.06);
+        transition:
+          transform 160ms ease,
+          background 160ms ease,
+          border-color 160ms ease;
+      }
+      nav.desktop-nav a:hover {
+        transform: translateY(-1px);
+        background: rgba(220, 0, 0, 0.16);
+        border-color: rgba(220, 0, 0, 0.45);
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 240px;
+        justify-content: flex-end;
+      }
+      .pill {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 10px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #eaeaea;
+        font-weight: 800;
+        font-size: 0.92rem;
+        cursor: pointer;
+        user-select: none;
+      }
+      .pill small {
+        color: var(--muted2);
+        font-weight: 800;
+      }
+      .pill:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      /* ===== Burger + mobile menu (kept, slightly refined) ===== */
+      .burger {
+        display: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(220, 0, 0, 0.55);
+        backdrop-filter: blur(8px);
+        cursor: pointer;
+        padding: 0;
+        position: relative;
+      }
+      .burger:focus {
+        outline: 2px solid rgba(220, 0, 0, 0.7);
+        outline-offset: 2px;
+      }
+      .burger span {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 22px;
+        height: 2px;
+        background: #fff;
+        transform: translate(-50%, -50%);
+        transition:
+          transform 220ms ease,
+          opacity 180ms ease,
+          width 220ms ease;
+        border-radius: 2px;
+      }
+      .burger span:nth-child(1) {
+        transform: translate(-50%, calc(-50% - 7px));
+        width: 20px;
+      }
+      .burger span:nth-child(2) {
+        transform: translate(-50%, -50%);
+        width: 22px;
+        opacity: 0.95;
+      }
+      .burger span:nth-child(3) {
+        transform: translate(-50%, calc(-50% + 7px));
+        width: 18px;
+        opacity: 0.9;
+      }
+      .burger.is-open span:nth-child(1) {
+        transform: translate(-50%, -50%) rotate(45deg);
+        width: 22px;
+      }
+      .burger.is-open span:nth-child(2) {
+        opacity: 0;
+      }
+      .burger.is-open span:nth-child(3) {
+        transform: translate(-50%, -50%) rotate(-45deg);
+        width: 22px;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        display: none;
+        z-index: 2500;
+      }
+      .mobile-menu.is-open {
+        display: block;
+      }
+      .mobile-menu .backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.62);
+        backdrop-filter: blur(7px);
+      }
+      .mobile-menu .panel {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: min(360px, 88vw);
+        background: rgba(0, 0, 0, 0.92);
+        border-left: 3px solid var(--red);
+        padding: 18px;
+        transform: translateX(100%);
+        transition: transform 240ms ease;
+      }
+      .mobile-menu.is-open .panel {
+        transform: translateX(0);
+      }
+      .mobile-menu h2 {
+        color: var(--red);
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+      }
+      .mobile-menu a {
+        display: block;
+        text-decoration: none;
+        color: #ddd;
+        font-weight: 900;
+        padding: 0.9rem 0.8rem;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.06);
+        margin-bottom: 0.6rem;
+      }
+      .mobile-menu a:hover {
+        background: rgba(220, 0, 0, 0.18);
+        border-color: rgba(220, 0, 0, 0.5);
+        color: #fff;
+      }
+
+      /* ===== Hero ===== */
+      .hero {
+        max-width: 1200px;
+        margin: 22px auto 0;
+        padding: 0 16px;
+      }
+      .heroCard {
+        border-radius: var(--radius2);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.04)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+      }
+      .heroInner {
+        padding: 22px;
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        gap: 16px;
+        align-items: stretch;
+      }
+      .heroTitle {
+        font-size: clamp(1.4rem, 2.4vw, 2rem);
+        letter-spacing: 0.4px;
+        line-height: 1.2;
+      }
+      .heroTitle span {
+        color: var(--red);
+      }
+      .heroText {
+        color: var(--muted);
+        margin-top: 10px;
+        max-width: 70ch;
+      }
+      .quickStats {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr;
+      }
+      .stat {
+        border-radius: 16px;
+        padding: 12px 12px;
+        background: rgba(0, 0, 0, 0.28);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .stat b {
+        display: block;
+        font-size: 1.05rem;
+      }
+      .stat small {
+        color: var(--muted2);
+        font-weight: 800;
+      }
+
+      /* ===== Sections ===== */
+      .container {
+        max-width: 1200px;
+        margin: 22px auto;
+        padding: 0 16px;
+      }
+      section {
+        margin-top: 18px;
+      }
+      .sectionHead {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 14px;
+        margin: 22px 0 12px;
+      }
+      .sectionHead h2 {
+        font-size: 1.35rem;
+        letter-spacing: 0.4px;
+      }
+      .sectionHead h2 span {
+        color: var(--red);
+      }
+      .sectionHead p {
+        color: var(--muted2);
+        font-weight: 700;
+      }
+
+      /* ===== Tools row (search/filter) ===== */
+      .tools {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 12px;
+      }
+      .tools input,
+      .tools select {
+        flex: 1;
+        min-width: 220px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.28);
+        color: var(--text);
+        outline: none;
+        font-weight: 750;
+      }
+      .tools input::placeholder {
+        color: rgba(255, 255, 255, 0.45);
+        font-weight: 800;
+      }
+      .btn {
+        padding: 10px 12px;
+        border-radius: 14px;
+        background: rgba(220, 0, 0, 0.16);
+        border: 1px solid rgba(220, 0, 0, 0.5);
+        color: #fff;
+        font-weight: 900;
+        cursor: pointer;
+        transition:
+          transform 150ms ease,
+          background 150ms ease;
+        white-space: nowrap;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        background: rgba(220, 0, 0, 0.22);
+      }
+
+      /* ===== Cards grid ===== */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+        margin-top: 14px;
+      }
+      .card {
+        border-radius: var(--radius);
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 14px;
+        box-shadow: var(--shadow2);
+        transition:
+          transform 180ms ease,
+          box-shadow 180ms ease,
+          background 180ms ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        background: var(--panel2);
+        box-shadow: 0 14px 32px rgba(220, 0, 0, 0.22);
+      }
+
+      /* ===== Driver media (image only) ===== */
+      .driver-media {
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.25);
+        margin-bottom: 12px;
+        position: relative;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+        aspect-ratio: 16/9;
+      }
+      .driver-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: contrast(1.05) saturate(1.05);
+        transform: scale(1.02);
+      }
+      .label {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-weight: 950;
+        font-size: 0.78rem;
+        letter-spacing: 0.2px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(6px);
+        z-index: 2;
+      }
+      .driverName {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 6px;
+      }
+      .driverName h3 {
+        color: var(--red);
+        font-size: 1.25rem;
+        letter-spacing: 0.2px;
+      }
+      .tag {
+        font-weight: 950;
+        font-size: 0.78rem;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #f0f0f0;
+        white-space: nowrap;
+      }
+      .meta p {
+        color: #e6e6e6;
+        margin-top: 6px;
+        font-weight: 720;
+      }
+      .meta p span {
+        color: var(--muted2);
+        font-weight: 850;
+      }
+      .desc {
+        color: var(--muted);
+        margin-top: 10px;
+      }
+
+      /* ===== Timeline ===== */
+      .timeline {
+        border-radius: var(--radius2);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 14px;
+      }
+      .tl-item {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 12px;
+        padding: 12px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(0, 0, 0, 0.22);
+        margin-bottom: 10px;
+      }
+      .tl-item:last-child {
+        margin-bottom: 0;
+      }
+      .year {
+        font-weight: 950;
+        color: var(--red);
+        font-size: 1.05rem;
+      }
+      .tl-item b {
+        display: block;
+        font-size: 1.02rem;
+      }
+      .tl-item p {
+        color: var(--muted);
+        margin-top: 6px;
+      }
+
+      /* ===== Champions panel ===== */
+      .champRow {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 10px;
+      }
+      .champ {
+        border-radius: 18px;
+        padding: 14px;
+        background: rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .champ h3 {
+        color: var(--red);
+        font-size: 1.08rem;
+      }
+      .champ p {
+        margin-top: 8px;
+        color: var(--muted);
+        font-weight: 780;
+      }
+      .points {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 8px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        font-weight: 950;
+      }
+      .points small {
+        color: var(--muted2);
+        font-weight: 900;
+      }
+
+      /* ===== Footer ===== */
+      footer {
+        margin-top: 26px;
+        padding: 22px 16px;
+        background: rgba(0, 0, 0, 0.65);
+        border-top: 3px solid var(--red);
+        text-align: center;
+        color: var(--muted);
+      }
+      footer a {
+        color: #fff;
+        font-weight: 900;
+      }
+
+      /* ===== Scroll-to-top ===== */
+      .toTop {
+        position: fixed;
+        right: 14px;
+        bottom: 14px;
+        z-index: 2200;
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        background: rgba(220, 0, 0, 0.16);
+        border: 1px solid rgba(220, 0, 0, 0.55);
+        color: #fff;
+        font-weight: 950;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        transform: translateY(10px);
+        pointer-events: none;
+        transition:
+          opacity 180ms ease,
+          transform 180ms ease;
+      }
+      .toTop.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      /* ===== Reveal animation ===== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition:
+          opacity 420ms ease,
+          transform 420ms ease;
+      }
+      .reveal.on {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ===== Responsive ===== */
+      @media (max-width: 920px) {
+        .heroInner {
+          grid-template-columns: 1fr;
+        }
+        .actions {
+          min-width: auto;
+        }
+      }
+      @media (max-width: 820px) {
+        nav.desktop-nav {
+          display: none;
+        }
+        .burger {
+          display: inline-block;
+        }
+        .champRow {
+          grid-template-columns: 1fr;
+        }
+        .brand {
+          min-width: auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body id="top">
+    <!-- Intro overlay -->
+    <div class="intro" id="intro">
+      <div class="intro-inner">
+        <div class="intro-title">
+          <h2><span>F1</span> START SEQUENCE</h2>
+          <p>Lights out and away we go…</p>
+        </div>
+        <div class="lights" aria-hidden="true">
+          <div class="light"></div>
+          <div class="light"></div>
+          <div class="light"></div>
+          <div class="light"></div>
+          <div class="light"></div>
+        </div>
+        <div class="track" aria-hidden="true">
+          <div class="car">
+            <div class="wing"></div>
+            <div class="car-nose"></div>
+            <div class="car-body"></div>
+            <div class="cockpit"></div>
+            <div class="rear"></div>
+            <div class="wheel front"></div>
+            <div class="wheel back"></div>
+          </div>
+        </div>
+        <div class="intro-note">
+          Tip: open on mobile — the menu becomes the burger.
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <div class="topbar">
+        <div class="brand">
+          <div class="logoMark">F1</div>
+          <div>
+            <h1><span>F1</span> Drivers Hub</h1>
+            <p>Legends • History • Champions</p>
+          </div>
+        </div>
+
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a href="#drivers">Drivers</a>
+          <a href="#championship">Championship</a>
+          <a href="#history">History</a>
+          <a href="#top">Top</a>
+        </nav>
+
+        <div class="actions">
+          <div class="pill" title="Quick fact">
+            🏁 <span>Fast. Loud.</span> <small>Iconic.</small>
+          </div>
+
+          <button
+            class="burger"
+            id="burgerBtn"
+            aria-label="Open menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <div class="backdrop" id="menuBackdrop"></div>
+      <div
+        class="panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
+      >
+        <h2>Menu</h2>
+        <a href="#drivers">Drivers</a>
+        <a href="#championship">Championship</a>
+        <a href="#history">History</a>
+        <a href="#top">Top</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero reveal">
+      <div class="heroCard">
+        <div class="heroInner">
+          <div>
+            <div class="heroTitle">
+              A modern <span>Formula 1</span> website — built for speed.
+            </div>
+            <p class="heroText">
+              No videos (so it works everywhere). Just clean driver profiles, a
+              quick history timeline, and the latest completed championship top
+              2.
+            </p>
+          </div>
+          <div class="quickStats">
+            <div class="stat">
+              <b>Drivers</b>
+              <small>Legends + modern icons</small>
+            </div>
+            <div class="stat">
+              <b>History</b>
+              <small>Key milestones in one scroll</small>
+            </div>
+            <div class="stat">
+              <b>Championship</b>
+              <small>2025 top 2 included</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="container">
+      <!-- Drivers -->
+      <section id="drivers" class="reveal">
+        <div class="sectionHead">
+          <h2><span>Drivers</span> Gallery</h2>
+          <p>Search + filter (no reload)</p>
+        </div>
+
+        <div class="tools" role="group" aria-label="Driver filters">
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search driver (e.g., Senna, Schumacher, Verstappen)..."
+          />
+          <select id="eraSelect" aria-label="Filter by era">
+            <option value="all">All eras</option>
+            <option value="modern">Modern era</option>
+            <option value="classic">Classic era</option>
+          </select>
+          <button class="btn" id="clearBtn" type="button">Clear</button>
+        </div>
+
+        <div class="grid" id="driversGrid">
+          <!-- Lewis Hamilton -->
+          <article
+            class="card driver"
+            data-name="lewis hamilton"
+            data-era="modern"
+          >
+            <div class="driver-media">
+              <span class="label">Driver Portrait</span>
+              <img
+                loading="lazy"
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Lewis%20Hamilton%20280607.JPG"
+                alt="Lewis Hamilton portrait"
+              />
+            </div>
+            <div class="driverName">
+              <h3>Lewis Hamilton</h3>
+              <span class="tag">Modern</span>
+            </div>
+            <div class="meta">
+              <p><span>Nationality:</span> British</p>
+              <p><span>Championships:</span> 7</p>
+            </div>
+            <p class="desc">
+              Record-setting winner known for consistency, racecraft, and
+              relentless pace.
+            </p>
+          </article>
+
+          <!-- Max Verstappen -->
+          <article
+            class="card driver"
+            data-name="max verstappen"
+            data-era="modern"
+          >
+            <div class="driver-media">
+              <span class="label">Driver Portrait</span>
+              <img
+                loading="lazy"
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Max%20Verstappen%202017%20Malaysia%203.jpg"
+                alt="Max Verstappen portrait"
+              />
+            </div>
+            <div class="driverName">
+              <h3>Max Verstappen</h3>
+              <span class="tag">Modern</span>
+            </div>
+            <div class="meta">
+              <p><span>Nationality:</span> Dutch</p>
+              <p><span>Championships:</span> 4</p>
+            </div>
+            <p class="desc">
+              Aggressive, precise, and devastatingly fast — a defining driver of
+              his generation.
+            </p>
+          </article>
+
+          <!-- Michael Schumacher -->
+          <article
+            class="card driver"
+            data-name="michael schumacher"
+            data-era="classic"
+          >
+            <div class="driver-media">
+              <span class="label">Driver Portrait</span>
+              <img
+                loading="lazy"
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Michael%20Schumacher%2001%20%28sk%29.jpg"
+                alt="Michael Schumacher portrait"
+              />
+            </div>
+            <div class="driverName">
+              <h3>Michael Schumacher</h3>
+              <span class="tag">Classic</span>
+            </div>
+            <div class="meta">
+              <p><span>Nationality:</span> German</p>
+              <p><span>Championships:</span> 7</p>
+            </div>
+            <p class="desc">
+              A benchmark for dominance and preparation — shaped modern F1
+              professionalism.
+            </p>
+          </article>
+
+          <!-- Ayrton Senna -->
+          <article
+            class="card driver"
+            data-name="ayrton senna"
+            data-era="classic"
+          >
+            <div class="driver-media">
+              <span class="label">Driver Portrait</span>
+              <img
+                loading="lazy"
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Ayrton%20Senna%20%28close%203x4%20cropped%29.jpg"
+                alt="Ayrton Senna portrait"
+              />
+            </div>
+            <div class="driverName">
+              <h3>Ayrton Senna</h3>
+              <span class="tag">Classic</span>
+            </div>
+            <div class="meta">
+              <p><span>Nationality:</span> Brazilian</p>
+              <p><span>Championships:</span> 3</p>
+            </div>
+            <p class="desc">
+              Iconic for raw speed and intensity — especially legendary in wet
+              conditions.
+            </p>
+          </article>
+
+          <!-- Juan Manuel Fangio -->
+          <article
+            class="card driver"
+            data-name="juan manuel fangio"
+            data-era="classic"
+          >
+            <div class="driver-media">
+              <span class="label">Driver Portrait</span>
+              <img
+                loading="lazy"
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Juan_Manuel_Fangio_%28circa_1952%29.jpg"
+                alt="Juan Manuel Fangio portrait"
+              />
+            </div>
+            <div class="driverName">
+              <h3>Juan Manuel Fangio</h3>
+              <span class="tag">Classic</span>
+            </div>
+            <div class="meta">
+              <p><span>Nationality:</span> Argentine</p>
+              <p><span>Championships:</span> 5</p>
+            </div>
+            <p class="desc">
+              A pioneer of the early era — calm, clinical, and historically
+              dominant.
+            </p>
+          </article>
+
+          <!-- Alain Prost -->
+          <article
+            class="card driver"
+            data-name="alain prost"
+            data-era="classic"
+          >
+            <div class="driver-media">
+              <span class="label">Driver Portrait</span>
+              <img
+                loading="lazy"
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Alain_Prost_in_1985_%28cropped%29.jpg"
+                alt="Alain Prost portrait"
+              />
+            </div>
+            <div class="driverName">
+              <h3>Alain Prost</h3>
+              <span class="tag">Classic</span>
+            </div>
+            <div class="meta">
+              <p><span>Nationality:</span> French</p>
+              <p><span>Championships:</span> 4</p>
+            </div>
+            <p class="desc">
+              “The Professor” — strategic, efficient, and ruthless with points
+              management.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Championship -->
+      <section id="championship" class="reveal">
+        <div class="sectionHead">
+          <h2><span>Last Championship</span> Top 2</h2>
+          <p>Latest completed season snapshot</p>
+        </div>
+
+        <div class="card" style="border-radius: 22px">
+          <p class="desc" style="margin-top: 0">
+            Based on the latest completed Drivers’ Championship standings:
+          </p>
+
+          <div class="champRow">
+            <div class="champ">
+              <h3>🥇 1st — Lando Norris</h3>
+              <div class="points">
+                <span>Points</span>
+                <span>423 <small>pts</small></span>
+              </div>
+              <p><b>Team:</b> McLaren</p>
+            </div>
+
+            <div class="champ">
+              <h3>🥈 2nd — Max Verstappen</h3>
+              <div class="points">
+                <span>Points</span>
+                <span>421 <small>pts</small></span>
+              </div>
+              <p><b>Team:</b> Red Bull</p>
+            </div>
+          </div>
+
+          <p class="desc" style="margin-top: 12px">
+            Margin: <b style="color: #fff">2 points</b> — one of the tightest
+            title fights in recent memory.
+          </p>
+        </div>
+      </section>
+
+      <!-- History -->
+      <section id="history" class="reveal">
+        <div class="sectionHead">
+          <h2><span>F1</span> History Timeline</h2>
+          <p>High-level milestones</p>
+        </div>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="year">1950</div>
+            <div>
+              <b>The World Championship begins</b>
+              <p>
+                Formula 1 launches as the official World Championship, creating
+                a global stage for the fastest drivers and teams.
+              </p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="year">1970s</div>
+            <div>
+              <b>Aerodynamics & safety accelerate</b>
+              <p>
+                Wings, downforce, and major safety changes reshape both car
+                performance and track standards.
+              </p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="year">1980s–90s</div>
+            <div>
+              <b>Turbo era → tech era</b>
+              <p>
+                Innovation explodes: turbos, electronics, and rapid engineering
+                advances define modern F1 culture.
+              </p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="year">2000s</div>
+            <div>
+              <b>Data-driven dominance</b>
+              <p>
+                Simulation, telemetry, and strategy modeling become decisive —
+                elite teams operate like aerospace programs.
+              </p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="year">Today</div>
+            <div>
+              <b>Hybrid era & innovation race</b>
+              <p>
+                Complex power units + regulations push teams to find performance
+                in efficiency, aero, and execution.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2026 F1 Drivers Hub. Built as a fan project. Photos via Wikimedia
+        Commons.
+      </p>
+      <p style="margin-top: 6px">
+        Jump to: <a href="#drivers">Drivers</a> ·
+        <a href="#championship">Championship</a> ·
+        <a href="#history">History</a>
+      </p>
+    </footer>
+
+    <button class="toTop" id="toTopBtn" aria-label="Scroll to top">↑</button>
+
+    <script>
+      // Intro animation: remove after it plays
+      window.addEventListener("load", () => {
+        const intro = document.getElementById("intro");
+        setTimeout(() => {
+          intro.classList.add("hidden");
+          setTimeout(() => intro.remove(), 450);
+        }, 2700);
+      });
+
+      // Mobile menu toggle
+      const burgerBtn = document.getElementById("burgerBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuBackdrop = document.getElementById("menuBackdrop");
+
+      function setMenu(open) {
+        burgerBtn.classList.toggle("is-open", open);
+        mobileMenu.classList.toggle("is-open", open);
+        burgerBtn.setAttribute("aria-expanded", String(open));
+        mobileMenu.setAttribute("aria-hidden", String(!open));
+        burgerBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      }
+      burgerBtn.addEventListener("click", () => {
+        const open = !burgerBtn.classList.contains("is-open");
+        setMenu(open);
+      });
+      menuBackdrop.addEventListener("click", () => setMenu(false));
+      mobileMenu.addEventListener("click", (e) => {
+        if (e.target.tagName && e.target.tagName.toLowerCase() === "a")
+          setMenu(false);
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setMenu(false);
+      });
+
+      // Scroll-to-top button
+      const toTopBtn = document.getElementById("toTopBtn");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 600) toTopBtn.classList.add("show");
+        else toTopBtn.classList.remove("show");
+      });
+      toTopBtn.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" }),
+      );
+
+      // Reveal on scroll
+      const revealEls = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((ent) => {
+            if (ent.isIntersecting) ent.target.classList.add("on");
+          });
+        },
+        { threshold: 0.12 },
+      );
+      revealEls.forEach((el) => io.observe(el));
+
+      // Driver search + filter
+      const searchInput = document.getElementById("searchInput");
+      const eraSelect = document.getElementById("eraSelect");
+      const clearBtn = document.getElementById("clearBtn");
+      const drivers = Array.from(document.querySelectorAll(".driver"));
+
+      function applyFilters() {
+        const q = (searchInput.value || "").trim().toLowerCase();
+        const era = eraSelect.value;
+
+        drivers.forEach((card) => {
+          const name = card.dataset.name || "";
+          const cardEra = card.dataset.era || "all";
+
+          const matchName = !q || name.includes(q);
+          const matchEra = era === "all" || cardEra === era;
+
+          card.style.display = matchName && matchEra ? "" : "none";
+        });
+      }
+
+      searchInput.addEventListener("input", applyFilters);
+      eraSelect.addEventListener("change", applyFilters);
+      clearBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        eraSelect.value = "all";
+        applyFilters();
+      });
+
+      // Image fallback (in case a hotlink is blocked)
+      document.querySelectorAll("img").forEach((img) => {
+        img.addEventListener(
+          "error",
+          () => {
+            img.alt = img.alt || "Driver photo unavailable";
+            img.style.filter = "grayscale(1) contrast(1.1)";
+          },
+          { once: true },
+        );
+      });
+    </script>
+  <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 </body>
 </html>
