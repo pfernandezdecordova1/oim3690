@@ -21,6 +21,14 @@ p {
 .container { max-width: 900px; margin: 0 auto; padding: 20px; }
 
 p.yellow { color: yellow; }
+ .container img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 12px auto;
+        padding: 10px;
+        border-radius: 6px;
+    }
 
 #sidebar { background:#f7fbf7; padding:12px; border-radius:6px; margin:12px 0; }
 .sidebar-inner h3 { margin-top:0; }
