@@ -33,9 +33,27 @@ p.yellow { color: yellow; }
 #sidebar { background:#f7fbf7; padding:12px; border-radius:6px; margin:12px 0; }
 .sidebar-inner h3 { margin-top:0; }
 .actions { margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
-.btn { background:var(--navy); color:#fff; border:none; padding:8px 12px; border-radius:4px; cursor:pointer; }
+.btn { 
+    background:var(--navy); 
+    color:#fff; 
+    border:none; 
+    padding:8px 12px; 
+    border-radius:4px; 
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+.btn:hover { 
+    background:#1a3a52;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.btn:active {
+    transform: scale(0.98);
+}
 .btn.primary { background:var(--babson-green); }
+.btn.primary:hover { background:#00a54a; }
 .btn.secondary { background:#6b7280; }
+.btn.secondary:hover { background:#7d8a96; }
 
 
 @media (min-width: 800px) {
