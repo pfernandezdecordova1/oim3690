@@ -107,6 +107,52 @@ header .highlight {
   line-height: 1.8;
 }
 
+/* Image hover animation */
+.section-title img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 15px 0;
+  transition: all 0.3s ease;
+}
+
+.section-title img:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: var(--shadow-hover);
+}
+
+/* List item hover animation */
+.section-title ul {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.section-title ul li {
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+  padding-left: 8px;
+}
+
+.section-title ul li:hover {
+  transform: translateX(10px);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Heading hover animation */
+h1 {
+  transition: all 0.3s ease;
+}
+
+h1:hover {
+  transform: scale(1.05);
+  color: var(--primary-color);
+}
+
+/* Paragraph hover animation */
+.section-title p:hover {
+  transform: translateX(5px);
+}
 
 footer {
   text-align: center;
@@ -115,6 +161,36 @@ footer {
   border-top: 2px solid var(--border-color);
   color: var(--text-light);
   font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+footer:hover {
+  color: var(--primary-color);
+  background-color: rgba(0, 122, 61, 0.05);
+}
+
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  margin: 20px 0;
+}
+
+button:hover {
+  background-color: red;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(255, 0, 0, 0.3);
+}
+
+button:active {
+  background-color: var(--primary-color);
+  transform: scale(0.95);
 }
 
 

@@ -1,0 +1,430 @@
+
+:root {
+  --primary-color: #007a3d;
+  --secondary-color: #0b2340;
+  --accent-color: #f39c12;
+  --light-bg: #eef8ef;
+  --text-dark: #2c3e50;
+  --text-light: #7f8c8d;
+  --border-color: #bdc3c7;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  transition: background-color 0.3s ease;
+}
+
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+
+/* Header Styles */
+header {
+  text-align: center;
+  margin: 0 auto 50px;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 120px;
+}
+
+/* Title Animation */
+header h1 {
+  font-size: 48px;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: slideDown 0.6s ease, colorPulse 2s ease-in-out infinite;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+header h1:hover {
+  transform: scale(1.1) rotate(-2deg);
+  text-shadow: 0 0 20px rgba(243, 156, 18, 0.8);
+}
+
+/* Individual letter animation */
+.title-letter {
+  display: inline-block;
+  animation: bounce 0.6s ease-in-out;
+}
+
+.title-letter:nth-child(1) { animation-delay: 0s; }
+.title-letter:nth-child(2) { animation-delay: 0.1s; }
+.title-letter:nth-child(3) { animation-delay: 0.2s; }
+.title-letter:nth-child(4) { animation-delay: 0.3s; }
+.title-letter:nth-child(5) { animation-delay: 0.4s; }
+.title-letter:nth-child(6) { animation-delay: 0.5s; }
+.title-letter:nth-child(7) { animation-delay: 0.6s; }
+.title-letter:nth-child(8) { animation-delay: 0.7s; }
+.title-letter:nth-child(9) { animation-delay: 0.8s; }
+.title-letter:nth-child(10) { animation-delay: 0.9s; }
+
+header .highlight {
+  color: var(--accent-color);
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #ecf0f1;
+  font-style: italic;
+}
+
+
+.highlight {
+  color: var(--accent-color);
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.highlight:hover {
+  background-color: rgba(243, 156, 18, 0.2);
+  transform: scale(1.05);
+}
+
+/* Fade-in animation for sections */
+.fade-in {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Image Gallery Styles */
+.image-gallery {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.image-gallery img {
+  max-width: 45%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.image-gallery img:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: var(--shadow-hover);
+}
+
+
+.section-title {
+  background: white;
+  padding: 25px;
+  margin: 20px 0;
+  border-left: 5px solid var(--primary-color);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.section-title:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateX(5px);
+}
+
+.section-title h2 {
+  color: var(--primary-color);
+  font-size: 28px;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.section-title:hover h2 {
+  color: var(--accent-color);
+}
+
+.section-title p {
+  color: var(--text-dark);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Image hover animation */
+.section-title img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 15px 0;
+  transition: all 0.3s ease;
+}
+
+.section-title img:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: var(--shadow-hover);
+}
+
+/* List item hover animation */
+.section-title ul {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.section-title ul li {
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+  padding-left: 8px;
+}
+
+.section-title ul li:hover {
+  transform: translateX(10px);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Heading hover animation */
+h1 {
+  transition: all 0.3s ease;
+}
+
+h1:hover {
+  transform: scale(1.05);
+  color: var(--primary-color);
+}
+
+/* Paragraph hover animation */
+.section-title p:hover {
+  transform: translateX(5px);
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+  border-top: 2px solid var(--border-color);
+  color: var(--text-light);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+footer:hover {
+  color: var(--primary-color);
+  background-color: rgba(0, 122, 61, 0.05);
+}
+
+/* Flip animation for button text */
+.flip-text {
+  display: inline-block;
+  transition: all 0.6s ease;
+}
+
+button:hover .flip-text {
+  transform: rotateY(360deg) scale(1.1);
+}
+
+/* Keyframe flip animation */
+@keyframes flipText {
+  0% {
+    transform: rotateY(0deg);
+    content: "Click Me!";
+  }
+  50% {
+    transform: rotateY(90deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Color Pulse Animation for Title */
+@keyframes colorPulse {
+  0%, 100% {
+    color: white;
+    text-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+  }
+  50% {
+    color: #f39c12;
+    text-shadow: 0 0 20px rgba(243, 156, 18, 0.8);
+  }
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide Down Animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  margin: 20px 0;
+}
+
+button:hover {
+  background-color: red;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(255, 0, 0, 0.3);
+}
+
+button:active {
+  background-color: var(--primary-color);
+  transform: scale(0.95);
+}
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Soccer Ball Container */
+.soccer-ball-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(135deg, #e8f5e9 0%, #f0f4c3 50%, #fff9c4 100%);
+  border: 3px dashed #007a3d;
+  border-radius: 10px;
+  margin: 20px 0;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Animated Soccer Ball */
+.ball {
+  position: absolute;
+  font-size: 40px;
+  animation: ballTravel 8s infinite ease-in-out;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Ball traveling in a complex path around the container */
+@keyframes ballTravel {
+  0% {
+    top: 10px;
+    left: 20px;
+  }
+  12% {
+    top: 20px;
+    left: 60%;
+  }
+  25% {
+    top: 10px;
+    right: 20px;
+  }
+  37% {
+    top: 50%;
+    right: 30px;
+  }
+  50% {
+    bottom: 20px;
+    right: 40%;
+  }
+  62% {
+    bottom: 30px;
+    left: 30%;
+  }
+  75% {
+    top: 50%;
+    left: 20px;
+  }
+  87% {
+    top: 20px;
+    left: 40%;
+  }
+  100% {
+    top: 10px;
+    left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .soccer-ball-container {
+    height: 200px;
+  }
+  
+  .ball {
+    font-size: 32px;
+  }
+    .section-title {
+    padding: 20px;
+  }
+  
+  .section-title h2 {
+    font-size: 24px;
+  }
+}
+
+/* My Element Hover Effect */
+.my-element {
+  background-color: #eee;
+  transition: background-color 0.3s;
+  padding: 15px;
+  border-radius: 6px;
+  margin: 15px 0;
+}
+
+.my-element:hover {
+  background-color: #3b82f6;
+  color: white;
+}
