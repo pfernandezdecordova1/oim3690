@@ -8,3 +8,4 @@ This is my course repository for oim3690.
 
 ## Links 
 - <a href="https://pfernandezdecordova1.github.io/">My Personal Website</a>
+- <a href="https://github.com/miniproject1">Mini Project 1 repository</a>
