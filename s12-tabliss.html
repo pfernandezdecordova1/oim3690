@@ -19,10 +19,21 @@
   <img class="bg" src="https://media.betterroaming.com/f/252707/2048x1152/230afd2c7c/blog_image_madrid_vacation.webp" alt="Madrid cityscape">
   <div class="center-wrapper">
     <div class="center">
-      <h1>07:24</h1>
+      <h1 id="clock">00:00:00</h1>
       <p><a href="https://github.com" style="color:#10b981;"><i class="fab fa-github"></i></a> &nbsp; | &nbsp; <a href="https://twitter.com" style="color:#93c5fd;"><i class="fab fa-twitter"></i></a></p>
 
     </div>
   </div>
 </body>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2,'0');
+      const minutes = String(now.getMinutes()).padStart(2,'0');
+      const seconds = String(now.getSeconds()).padStart(2,'0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
 </html>
