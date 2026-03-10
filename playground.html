@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CR7 Fan Playground</title>
+	<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230b0f1a'/%3E%3Ctext x='32' y='40' font-size='24' text-anchor='middle' fill='%23fbbf24'%3E7%3C/text%3E%3C/svg%3E" />
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			margin: 0;
+			background: #0f172a;
+			color: #e5e7eb;
+		}
+
+		.container {
+			max-width: 1000px;
+			margin: 24px auto;
+			padding: 0 16px 24px;
+		}
+
+			h1 {
+			margin-bottom: 16px;
+			color: #fbbf24;
+		}
+
+		section {
+			background: #111827;
+			border-radius: 10px;
+			padding: 16px;
+			margin-bottom: 16px;
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+		}
+
+		h2 {
+			color: #fbbf24;
+		}
+
+		.media-frame {
+			width: 100%;
+			border: 0;
+			border-radius: 8px;
+			min-height: 315px;
+		}
+
+		.faq details {
+			border: 1px solid #374151;
+			border-radius: 8px;
+			padding: 10px 12px;
+			margin-bottom: 10px;
+			background: #1f2937;
+		}
+
+		.faq summary {
+			cursor: pointer;
+			font-weight: 600;
+		}
+
+		canvas {
+			border: 1px solid #374151;
+			border-radius: 8px;
+			display: block;
+			background: #0b1020;
+			width: 100%;
+			max-width: 500px;
+			height: 260px;
+		}
+
+		.logo-wrap {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			flex-wrap: wrap;
+		}
+
+		.logo-wrap img {
+			width: 90px;
+			height: 90px;
+			border-radius: 12px;
+			object-fit: cover;
+			border: 2px solid #fbbf24;
+			background: #fff;
+		}
+
+		a {
+			color: #93c5fd;
+		}
+	</style>
+</head>
+<body>
+	<main class="container">
+		<h1>CR7 Fan Playground</h1>
+
+		<section>
+			<h2>Favorite Logo</h2>
+			<div class="logo-wrap">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg" alt="Cristiano Ronaldo" />
+				<p>This page is now all about Cristiano Ronaldo (CR7): highlights, map, fan media, FAQ, and a custom canvas drawing.</p>
+			</div>
+		</section>
+
+		<section>
+			<h2>CR7 YouTube Highlights</h2>
+			<iframe
+				class="media-frame"
+				src="https://www.youtube.com/embed/4IVIbFZsb78"
+				title="YouTube video player"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				allowfullscreen>
+			</iframe>
+			<p style="margin-top: 8px;">CR7 Career Highlights</p>
+		</section>
+
+		<section>
+			<h2>CR7 Spot on the Map</h2>
+			<iframe
+				class="media-frame"
+				src="https://www.google.com/maps?q=Museu+CR7+Funchal&output=embed"
+				title="Map of Museu CR7 Funchal"
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade">
+			</iframe>
+		</section>
+
+		<section>
+			<h2>CR7 Fan Media (Audio + Video)</h2>
+			<p>Stadium-style audio:</p>
+			<audio controls>
+				<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_eb5f2e0e6d.mp3?filename=stadium-crowd-110367.mp3" type="audio/mpeg" />
+				Your browser does not support the audio element.
+			</audio>
+			<p style="margin-top: 12px;">Football video:</p>
+			<video controls width="400" style="max-width: 100%; border-radius: 8px;">
+				<source src="https://cdn.coverr.co/videos/coverr-soccer-player-practicing-skills-1574/1080p.mp4" type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
+		</section>
+
+		<section class="faq">
+			<h2>CR7 FAQ</h2>
+			<details>
+				<summary>Why is Ronaldo called CR7?</summary>
+				<p>CR7 combines his initials (Cristiano Ronaldo) and his iconic shirt number 7.</p>
+			</details>
+			<details>
+				<summary>Which clubs did he become most famous at?</summary>
+				<p>Sporting CP, Manchester United, Real Madrid, Juventus, and now Al Nassr are key parts of his career story.</p>
+			</details>
+			<details>
+				<summary>What makes him special?</summary>
+				<p>Elite work ethic, consistency, athleticism, and a huge number of goals at top level competitions.</p>
+			</details>
+		</section>
+
+		<section>
+			<h2>Canvas Drawing: Soccer Ball</h2>
+			<canvas id="demoCanvas" width="500" height="260"></canvas>
+		</section>
+	</main>
+
+	<script>
+		const canvas = document.getElementById('demoCanvas');
+		const ctx = canvas.getContext('2d');
+
+		// Background
+		ctx.fillStyle = '#0b1020';
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+		// Draw soccer ball
+		const ballX = canvas.width / 2;
+		const ballY = canvas.height / 2;
+		const ballRadius = 80;
+
+		// White circle (base)
+		ctx.fillStyle = '#ffffff';
+		ctx.beginPath();
+		ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+		ctx.fill();
+
+		// Black pentagons pattern
+		ctx.fillStyle = '#000000';
+		ctx.lineWidth = 2;
+
+		// Function to draw pentagon
+		const drawPentagon = (x, y, r) => {
+			ctx.beginPath();
+			for (let i = 0; i < 5; i++) {
+				const angle = (i * 4 * Math.PI) / 5 - Math.PI / 2;
+				const px = x + r * Math.cos(angle);
+				const py = y + r * Math.sin(angle);
+				if (i === 0) ctx.moveTo(px, py);
+				else ctx.lineTo(px, py);
+			}
+			ctx.closePath();
+			ctx.fill();
+		};
+
+		// Draw pentagons
+		drawPentagon(ballX, ballY, 25);
+		drawPentagon(ballX - 40, ballY - 30, 15);
+		drawPentagon(ballX + 40, ballY - 30, 15);
+		drawPentagon(ballX - 50, ballY + 20, 15);
+		drawPentagon(ballX + 50, ballY + 20, 15);
+
+		// Highlight for 3D effect
+		ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+		ctx.beginPath();
+		ctx.arc(ballX - 25, ballY - 25, 20, 0, Math.PI * 2);
+		ctx.fill();
+
+		// Text
+		ctx.fillStyle = '#fbbf24';
+		ctx.font = 'bold 24px Arial';
+		ctx.textAlign = 'center';
+		ctx.fillText('GOAL!', ballX, ballY + ballRadius + 50);
+	</script>
+</body>
+</html>
