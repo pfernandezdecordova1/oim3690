@@ -1,12 +1,13 @@
- // Load items from localStorage when page loads
-        document.addEventListener('DOMContentLoaded', loadTasks);
+// Load items from localStorage when page loads
+document.addEventListener('DOMContentLoaded', loadTasks);
 
-        // Allow adding item with Enter key
-        document.getElementById('taskInput').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                addTask(false);
-            }
-        });
+// Handle form submission
+document.getElementById('taskForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const urgency = event.submitter.value;
+    const isUrgent = urgency === 'urgent';
+    addTask(isUrgent);
+});
 
         function addTask(isUrgent) {
             const input = document.getElementById('taskInput');

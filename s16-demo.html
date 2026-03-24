@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic querySelector Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Basic Page</h1>
+    
+    <p id="myText">This is my first paragraph of text.</p>
+    <p>This is my second paragraph of text.</p>
+    
+    <button id="myButton">Click me</button>
+
+    <script>
+        document.querySelector('#myButton').addEventListener('click', function() {
+            console.log('Button was clicked!');
+            
+            document.querySelector('#myText').textContent = 'The text has changed!';
+            document.querySelector('#myText').style.color = 'red';
+        });
+    </script>
+</body>
+</html>

@@ -269,7 +269,7 @@
             <p>Keep track of what you need to buy</p>
         </div>
 
-        <div class="input-container">
+        <form id="taskForm" class="input-container">
             <input 
                 type="text" 
                 id="taskInput" 
@@ -277,10 +277,10 @@
                 autofocus
             >
             <div class="input-buttons">
-                <button onclick="addTask(false)">Add</button>
-                <button class="urgent-btn" onclick="addTask(true)">Add Urgent</button>
+                <button type="submit" name="urgency" value="regular">Add</button>
+                <button type="submit" name="urgency" value="urgent" class="urgent-btn">Add Urgent</button>
             </div>
-        </div>
+        </form>
 
         <!-- URGENT INGREDIENTS SECTION -->
         <div class="section" id="urgentSection" style="display: none;">
