@@ -10,4 +10,6 @@ This is my course repository for oim3690.
 ## Projects
 
 - [personal website](https://pfernandezdecordova1.github.io/) 
-- [mini project 1]https://pfernandezdecordova1.github.io/FastingCompanion/
+- [mini project 1](https://pfernandezdecordova1.github.io/FastingCompanion/)
+- [mini project 2](https://github.com/pfernandezdecordova1/Invito)
+
