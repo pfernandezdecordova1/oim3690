@@ -1,79 +1,40 @@
-<!DOCTYPE html>
 <html lang="en">
-<head> 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic querySelector Demo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 40px;
-        }
-
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background: blue;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background: darkblue;
-        }
-
-        #output {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f4f4f4;
-            border-radius: 6px;
-        }
-    </style>
-</head>
 <body>
-    <h1>Template Literal Demo</h1>
-    <p>Click the button to see string concatenation vs template literals.</p>
-    <button id="showDemo">Show Demo</button>
-
-    <div id="output"></div>
-
     <script>
-        const button = document.querySelector("#showDemo");
-        const output = document.querySelector("#output");
+        const firstName = "Michael";
+        const lastName = "Scott";
+        let name = `${firstName} ${lastName}`;
 
-        button.addEventListener("click", () => {
-            const name = "Alice";
-            const age = 25;
+        name = "Dwight Schrute";
+        const message = `Hello, ${name}!`;
+        console.log(message);
 
-            // Old way (concatenation)
-            let msg1 = "Hello, " + name + "! You are " + age + ".";
+        let age = 45;
+        age = age + 5;
+        console.log(`In 5 years, ${name} will be ${age + 5} years old.`);
 
-            // New way (template literals)
-            let msg2 = `Hello, ${name}! You are ${age}.`;
+        let isEmployed = true;
+        console.log(`Is ${name} employed? ${isEmployed}`);
 
-            // Multi-line string
-            let html = `
-                <div>
-                    <h2>${name}</h2>
-                    <p>Age: ${age}</p>
-                </div>
-            `;
+        let middleName;
+        console.log(middleName);
 
-            output.innerHTML = `
-                <p><strong>Old way:</strong> ${msg1}</p>
-                <p><strong>New way:</strong> ${msg2}</p>
-                <hr>
-                <p><strong>Multi-line HTML:</strong></p>
-                ${html}
-            `;
-        });
+        let nickname = null;
+        console.log(nickname);
+
+        console.log(typeof "hello");
+        console.log(typeof name);
+        console.log(typeof age);
+        console.log(typeof isEmployed);
+        console.log(typeof middleName);
+        console.log(typeof nickname);
+
+        const studentId1 = 1001;
+        const studentId2 = 1002;
+        console.log(`Student 1: ${studentId1}`);
+        console.log(`Student 2: ${studentId2}`);
+
     </script>
 </body>
 </html>
+   
