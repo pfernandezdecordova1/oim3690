@@ -1,0 +1,20 @@
+<html lang="en">
+<body>
+    <label>Name: <input type="text" id="name"></label><br>
+    <label>Price: <input type="number" id="price"></label><br>
+    <label>Tax: <input type="number" id="taxInput"></label><br>
+    <button id="calculate">Calculate</button>
+    <p>Total: <span id="totalOutput">0</span></p>
+
+    <script>
+        document.getElementById("calculate").addEventListener("click", function () {
+            const name = document.getElementById("name").value || "Guest";
+            const price = parseFloat(document.getElementById("price").value) || 0;
+            const taxInput = parseFloat(document.getElementById("taxInput").value) || 0;
+            const total = price + taxInput;
+            document.getElementById("totalOutput").textContent = `${name}: $${total.toFixed(2)}`;
+        });
+    </script>
+</body>
+</html>
+   

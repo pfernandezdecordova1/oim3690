@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>    
+<body>
+    <input type="text" id="firstName" placeholder="First Name"><br>
+    <input type="text" id="lastName" placeholder="Last Name"><br>
+    X: <input type="number" id="x"><br>
+    Y: <input type="number" id="y"><br>
+    <button id="button">Calculate</button>
+    <p id="result">result</p>
+
+
+<script>
+        const firstName = document.getElementById("firstName");
+        const lastName = document.getElementById("lastName");
+        const x = document.getElementById("x");
+        const y = document.getElementById("y");     
+        const button= document.getElementById("button");
+        const result = document.getElementById("result");
+
+        function add(a, b) {
+            return a + b;
+        }
+
+        button.addEventListener("click", () => {
+            const fName = firstName.value || "Guest";
+            const lName = lastName.value || "";
+            const xinput = parseFloat(x.value) || 0;
+            const yinput = parseFloat(y.value) || 0;
+            const sum = add(xinput, yinput);
+            result.textContent = `${fName} ${lName}, sum is: ${sum}`;
+        });
+</script>
+
+</body>
+</html>
