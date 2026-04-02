@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+</head>
+<body>
+    <input type="text" id="itemInput" placeholder="Add item"><br>
+    <button id="addButton">Add Item</button>
+    <ul id="list"></ul>
+
+<script>
+        const items = ["Milk", "Eggs", "Bread"];
+        const itemInput = document.getElementById("itemInput");
+        const addButton = document.getElementById("addButton");
+        const list = document.getElementById("list");
+
+        function renderList() {
+            list.innerHTML = "";
+            for (let i = 0; i < items.length; i++) {
+                const li = document.createElement("li");
+                li.textContent = items[i];
+                list.appendChild(li);
+            }
+        }
+
+        addButton.addEventListener("click", () => {
+            const newItem = itemInput.value.trim();
+            if (newItem !== "") {
+                items.push(newItem);
+                itemInput.value = "";
+                renderList();
+            }
+        });
+
+        renderList();
+</script>
+
+</body>
+</html>

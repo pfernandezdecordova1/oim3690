@@ -6,14 +6,40 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Review Questions From Class</p>
+    <input type="text" id="name" placeholder="Name"><br>
+    <input type="number" id="age" placeholder="Age"><br>
+    <input type="text" id="country" placeholder="Country"><br>
+    <button id="button">Check</button>
+    <p id="result">result</p>
+
 <script>
-        let username = prompt("Enter your username:");
-        if (!username) {
-            username = "Guest";
+        const name = document.getElementById("name");
+        const age = document.getElementById("age");
+        const country = document.getElementById("country");
+        const button = document.getElementById("button");
+        const result = document.getElementById("result");
+
+        function canDrink(age, country) {
+            if (country.toLowerCase() === "us" || country.toLowerCase() === "usa" || country.toLowerCase() === "united states") {
+                return age >= 21;
+            } else {
+                return age >= 18;
+            }
         }
 
-        document.querySelector("p").textContent = `Hello, ${username}!`;
+        button.addEventListener("click", () => {
+            const userName = name.value || "Guest";
+            const userAge = Number(age.value);
+            const userCountry = country.value || "Unknown";
+
+            if (canDrink(userAge, userCountry)) {
+                result.textContent = `${userName}, YOU ARE ABLE TO DRINK`;
+                result.style.color = "green";
+            } else {
+                result.textContent = `${userName}, YOU ARE NOT ABLE TO DRINK`;
+                result.style.color = "red";
+            }
+        });
 </script>
 
 </body>
