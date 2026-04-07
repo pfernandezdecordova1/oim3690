@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="nameInput" placeholder="Student Name"><br>
+    <input type="text" id="gradeInput" placeholder="Student Grade"><br>
+    <button id="addBtn">Add Student</button>
+    <div id="student-list"></div>
+
+    <script>
+        const students = [
+            { name: "Alice", grade: "A" },
+            { name: "Bob", grade: "B" },
+            { name: "Charlie", grade: "C" }
+        ];
+
+        const list = document.querySelector("#student-list");
+        const nameInput = document.querySelector("#nameInput");
+        const gradeInput = document.querySelector("#gradeInput");
+        const addBtn = document.querySelector("#addBtn");
+
+        function renderStudents() {
+            list.innerHTML = "";
+            for (let i = 0; i < students.length; i++) {
+                const card = document.createElement("div");
+                card.textContent = `${students[i].name}: ${students[i].grade}`;
+                list.appendChild(card);
+            }
+        }
+
+        addBtn.addEventListener("click", function() {
+            const name = nameInput.value;
+            const grade = gradeInput.value;
+            if (name && grade) {
+                students.push({ name: name, grade: grade });
+                nameInput.value = "";
+                gradeInput.value = "";
+                renderStudents();
+            }
+        });
+
+        renderStudents();
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop Challenges</title>
+</head>
+<body>
+    <h3>Build a List</h3>
+    <ul id="numberList"></ul>
+
+    <h3>Sum it Up</h3>
+    <p id="sum"></p>
+
+    <h3>Find the Max</h3>
+    <p id="max"></p>
+
+    <h3>Count Positives</h3>
+    <p id="positives"></p>
+
+    <h3>Find Evens</h3>
+    <p id="evens"></p>
+
+    <script>
+        const numbers = [4, -8, 15, -16, 23, 42, -3];
+
+        const numberList = document.querySelector("#numberList");
+        for (let i = 0; i < numbers.length; i++) {
+            const li = document.createElement("li");
+            li.textContent = numbers[i];
+            numberList.appendChild(li);
+        }
+
+        let total = 0;
+        for (let i = 0; i < numbers.length; i++) {
+            total += numbers[i];
+        }
+        document.querySelector("#sum").textContent = `Total: ${total}`;
+
+        let max = numbers[0];
+        for (let i = 1; i < numbers.length; i++) {
+            if (numbers[i] > max) {
+                max = numbers[i];
+            }
+        }
+        document.querySelector("#max").textContent = `Max: ${max}`;
+
+        let positiveCount = 0;
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i] > 0) {
+                positiveCount++;
+            }
+        }
+        document.querySelector("#positives").textContent = `Positives: ${positiveCount}`;
+
+        let evens = [];
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i] % 2 == 0) {
+                evens.push(numbers[i]);
+            }
+        }
+        document.querySelector("#evens").textContent = `Evens: ${evens}`;
+    </script>
+</body>
+</html>
