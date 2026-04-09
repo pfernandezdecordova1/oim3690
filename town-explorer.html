@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Town Explorer</title>
+</head>
+<body>
+    <h1>Massachusetts Town Explorer</h1>
+    <input type="text" id="search" placeholder="Search towns by name..." />
+    <p id="count"></p>
+    <p id="largest"></p>
+    <ul id="result"></ul>
+
+    <script>
+        const searchInput = document.querySelector("#search");
+        const countEl = document.querySelector("#count");
+        const largestEl = document.querySelector("#largest");
+        const result = document.querySelector("#result");
+
+        let allTowns = [];
+
+        async function fetchTowns() {
+            result.innerHTML = "<li>Loading...</li>";
+            try {
+                const response = await fetch("https://oim.108122.xyz/mass", {
+                    headers: {
+                        "X-Token": "pablopablo",
+                    },
+                });
+                const data = await response.json();
+                allTowns = data.data;
+                displayTowns(allTowns.slice(0, 10));
+                countEl.textContent = `Showing 10 of ${allTowns.length} towns`;
+
+                // Bonus: find town with largest and smallest population
+                let biggestTown = allTowns[0];
+                let smallestTown = allTowns[0];
+                for (const town of allTowns) {
+                    if (town.population > biggestTown.population) {
+                        biggestTown = town;
+                    }
+                    if (town.population < smallestTown.population) {
+                        smallestTown = town;
+                    }
+                }
+                largestEl.textContent = `Largest town: ${biggestTown.name} (pop ${biggestTown.population}) | Smallest town: ${smallestTown.name} (pop ${smallestTown.population})`;
+            } catch (error) {
+                result.innerHTML = "<li>Error fetching towns. Please try again.</li>";
+                console.error(error);
+            }
+        }
+
+        function displayTowns(towns) {
+            let html = "";
+            for (const town of towns) {
+                html += `<li>${town.name} — ${town.county} County — pop ${town.population}</li>`;
+            }
+            result.innerHTML = html;
+        }
+
+        searchInput.addEventListener("input", () => {
+            const query = searchInput.value.toLowerCase();
+            const filtered = allTowns.filter((town) =>
+                town.name.toLowerCase().includes(query)
+            );
+            displayTowns(filtered);
+            countEl.textContent = `${filtered.length} town(s) matched`;
+        });
+
+        fetchTowns();
+    </script>
+</body>
+</html>

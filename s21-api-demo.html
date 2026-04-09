@@ -8,21 +8,64 @@
 </head>
 <body>
     <button>Click</button>
+    <input type="text" id="messageInput" placeholder="Enter a message" />
+    <button id="postBtn">Post Message</button>
     <p id="result"></p>
 
     <script>
         const btn = document.querySelector("button");
         const result = document.querySelector("#result");
 
-        async function getRandomWord() {
-            const response = await fetch("https://oim.108122.xyz/words/random");
-            const word = await response.json();
-            console.log(word);
-            result.textContent = word;
-        }
-        
+        function showStuff() {
 
-        btn.addEventListener("click", getRandomWord);
+        }
+
+        async function showTowns() {
+            const response = await fetch(
+                "https://oim.108122.xyz/mass",
+                {
+                    headers: {
+                        "X-Token": "pablopablo",
+                    },
+                },
+            );
+            const data = await response.json();
+
+            console.log(data.name); // 'Massachusetts'
+            console.log(data["governor"]); // 'Maura Healey'
+
+            for (const town of data.data) {
+                result.innerHTML += `<p>${town.name}: pop ${town.population}</p>`;
+            }
+
+            // console.log(data.data.length); // undefined
+        }
+
+        async function postMessage() {
+            const message = document.querySelector("#messageInput").value;
+            const response = await fetch(
+                "https://oim.108122.xyz/message",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-Token": "pablopablo",
+                    },
+                    body: JSON.stringify({ message: message }),
+                },
+            );
+            const data = await response.json();
+            console.log(data);
+            result.innerHTML += `<p>${data.message}</p>`;
+        }
+
+        btn.addEventListener("click", () => {
+            // getRandomWord();
+            // showStuff();
+            showTowns();
+        });
+
+        document.querySelector("#postBtn").addEventListener("click", postMessage);
     </script>
 </body>
 </html>

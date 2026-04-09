@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Word Generator</title>
+</head>
+<body>
+    <h1>Random Word Generator</h1>
+    <button id="getWord">Get Random Word</button>
+    <button id="getFive">Get 5 Random Words</button>
+    <p id="result"></p>
+
+    <script>
+        const getWordBtn = document.querySelector("#getWord");
+        const getFiveBtn = document.querySelector("#getFive");
+        const result = document.querySelector("#result");
+
+        async function getRandomWord() {
+            result.textContent = "Loading...";
+            try {
+                const response = await fetch("https://oim.108122.xyz/words/random");
+                const word = await response.json();
+                result.textContent = word;
+            } catch (error) {
+                result.textContent = "Error fetching word. Please try again.";
+                console.error(error);
+            }
+        }
+
+        async function getFiveWords() {
+            result.innerHTML = "Loading...";
+            try {
+                let html = "<ul>";
+                for (let i = 0; i < 5; i++) {
+                    const response = await fetch("https://oim.108122.xyz/words/random");
+                    const word = await response.json();
+                    html += `<li>${word}</li>`;
+                }
+                html += "</ul>";
+                result.innerHTML = html;
+            } catch (error) {
+                result.textContent = "Error fetching words. Please try again.";
+                console.error(error);
+            }
+        }
+
+        getWordBtn.addEventListener("click", getRandomWord);
+        getFiveBtn.addEventListener("click", getFiveWords);
+    </script>
+</body>
+</html>
