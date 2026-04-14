@@ -12,6 +12,8 @@
     <button id="postBtn">Post Message</button>
     <p id="result"></p>
 
+<script src="js/config.js"> </script>
+
     <script>
         const btn = document.querySelector("button");
         const result = document.querySelector("#result");
@@ -25,7 +27,7 @@
                 "https://oim.108122.xyz/mass",
                 {
                     headers: {
-                        "X-Token": "pablopablo",
+                        "X-Token": OIM_TOKEN,
                     },
                 },
             );
@@ -49,7 +51,7 @@
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "X-Token": "pablopablo",
+                        "X-Token": OIM_TOKEN,
                     },
                     body: JSON.stringify({ message: message }),
                 },
