@@ -13,4 +13,5 @@ This is my course repository for oim3690.
 - [mini project 1](https://pfernandezdecordova1.github.io/FastingCompanion/)
 - [mini project 2](https://github.com/pfernandezdecordova1/Invito)
 - [mini project 3](https://pfernandezdecordova1.github.io/miniproject3-miBooks/)
-- [final project](
+- [final project](https://github.com/pfernandezdecordova1/finalproject.git)
+
