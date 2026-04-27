@@ -7,7 +7,7 @@ This is my course repository for oim3690.
 - Year: Senior
 
 
-## Projects
+## Projects (live links)
 
 - My Personal Website 
 (https://pfernandezdecordova1.github.io/)
@@ -17,6 +17,7 @@ This is my course repository for oim3690.
 
 - Mini Project 2
 (https://github.com/pfernandezdecordova1/Invito)
+https://pfernandezdecordova1.github.io/Invito
 
 - Mini Project 3
 (https://pfernandezdecordova1.github.io/miniproject3-miBooks/)
@@ -26,4 +27,5 @@ This is my course repository for oim3690.
 
 - Final Project
 (https://github.com/pfernandezdecordova1/finalproject.git)
+ https://pfernandezdecordova1.github.io/finalproject
 

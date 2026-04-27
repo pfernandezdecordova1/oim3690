@@ -2,19 +2,157 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Projects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pablo Fernandez de Cordova — Portfolio</title>
     <link rel="stylesheet" href="css/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <h1>My Projects</h1>
-    <p>A collection of projects from OIM3690.</p>
-    <div>
-        <h2>Project 1</h2>
-        <p>Coming soon...</p>
-    </div>
-    <div>
-        <h2>Project 2</h2>
-        <p>Coming soon...</p>
-    </div>
+
+    <!-- SIDEBAR NAV -->
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <span class="sidebar-dot"></span>
+            <p class="sidebar-label">OIM3690</p>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#projects">Work</a>
+            <a href="https://pfernandezdecordova1.github.io/" target="_blank">Site</a>
+        </nav>
+        <p class="sidebar-year">2026</p>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="page">
+
+        <!-- HERO -->
+        <header class="hero">
+            <div class="hero-eyebrow">Finance · Web Development · Babson College</div>
+            <h1 class="hero-name">
+                <span class="name-first">Pablo</span>
+                <span class="name-last">Fernandez<br>de Cordova</span>
+            </h1>
+            <div class="hero-footer">
+                <p class="hero-sub">A collection of projects built throughout OIM3690 —<br>exploring JavaScript, APIs, and modern web design.</p>
+                <a href="https://pfernandezdecordova1.github.io/" target="_blank" class="hero-cta">
+                    Visit Portfolio <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="hero-line"></div>
+        </header>
+
+        <!-- PROJECTS LIST -->
+        <main id="projects" class="projects">
+
+            <!-- 01 Personal Website -->
+            <article class="project-row">
+                <span class="proj-num">01</span>
+                <div class="proj-body">
+                    <div class="proj-meta">Personal</div>
+                    <h2 class="proj-title">Personal Website</h2>
+                    <p class="proj-desc">My personal portfolio website showcasing background, skills, and work — built end-to-end during this course.</p>
+                </div>
+                <div class="proj-actions">
+                    <a href="https://pfernandezdecordova1.github.io/" target="_blank" class="proj-link">
+                        Live <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 02 FastingCompanion -->
+            <article class="project-row">
+                <span class="proj-num">02</span>
+                <div class="proj-body">
+                    <div class="proj-meta">Mini Project 1</div>
+                    <h2 class="proj-title">FastingCompanion</h2>
+                    <p class="proj-desc">An interactive app for tracking intermittent fasting windows, built with vanilla JavaScript.</p>
+                </div>
+                <div class="proj-actions">
+                    <a href="https://pfernandezdecordova1.github.io/FastingCompanion/" target="_blank" class="proj-link">
+                        Live <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 03 Invito -->
+            <article class="project-row">
+                <span class="proj-num">03</span>
+                <div class="proj-body">
+                    <div class="proj-meta">Mini Project 2</div>
+                    <h2 class="proj-title">Invito</h2>
+                    <p class="proj-desc">A web application for creating and managing event invitations with RSVP functionality.</p>
+                </div>
+                <div class="proj-actions">
+                    <a href="https://pfernandezdecordova1.github.io/Invito" target="_blank" class="proj-link">
+                        Live <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <a href="https://github.com/pfernandezdecordova1/Invito" target="_blank" class="proj-link ghost">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                </div>
+            </article>
+
+            <!-- 04 miBooks -->
+            <article class="project-row">
+                <span class="proj-num">04</span>
+                <div class="proj-body">
+                    <div class="proj-meta">Mini Project 3</div>
+                    <h2 class="proj-title">miBooks</h2>
+                    <p class="proj-desc">A reading-list tracker to search, save, and organize the books you want to read.</p>
+                </div>
+                <div class="proj-actions">
+                    <a href="https://pfernandezdecordova1.github.io/miniproject3-miBooks/" target="_blank" class="proj-link">
+                        Live <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 05 Elective -->
+            <article class="project-row">
+                <span class="proj-num">05</span>
+                <div class="proj-body">
+                    <div class="proj-meta">Elective</div>
+                    <h2 class="proj-title">Elective Mini Project</h2>
+                    <p class="proj-desc">A creative project exploring advanced front-end concepts and dynamic interactivity.</p>
+                </div>
+                <div class="proj-actions">
+                    <a href="https://pfernandezdecordova1.github.io/electiveminiproject" target="_blank" class="proj-link">
+                        Live <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- 06 Final Project -->
+            <article class="project-row highlight">
+                <span class="proj-num">06</span>
+                <div class="proj-body">
+                    <div class="proj-meta">Final Project</div>
+                    <h2 class="proj-title">Final Project</h2>
+                    <p class="proj-desc">The culminating project for OIM3690 — a full-featured web application demonstrating everything learned in the course.</p>
+                </div>
+                <div class="proj-actions">
+                    <a href="https://pfernandezdecordova1.github.io/finalproject" target="_blank" class="proj-link">
+                        Live <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <a href="https://github.com/pfernandezdecordova1/finalproject" target="_blank" class="proj-link ghost">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                </div>
+            </article>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <span>Pablo Fernandez de Cordova</span>
+            <span class="footer-dot">·</span>
+            <span>OIM3690 · Babson College</span>
+            <span class="footer-dot">·</span>
+            <span>2026</span>
+        </footer>
+
+    </div><!-- /page -->
+
 </body>
 </html>
