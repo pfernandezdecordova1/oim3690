@@ -9,9 +9,21 @@ This is my course repository for oim3690.
 
 ## Projects
 
-- [personal website](https://pfernandezdecordova1.github.io/) 
-- [mini project 1](https://pfernandezdecordova1.github.io/FastingCompanion/)
-- [mini project 2](https://github.com/pfernandezdecordova1/Invito)
-- [mini project 3](https://pfernandezdecordova1.github.io/miniproject3-miBooks/)
-- [final project](https://github.com/pfernandezdecordova1/finalproject.git)
+- My Personal Website 
+(https://pfernandezdecordova1.github.io/)
+
+- Mini Project 1
+(https://pfernandezdecordova1.github.io/FastingCompanion/)
+
+- Mini Project 2
+(https://github.com/pfernandezdecordova1/Invito)
+
+- Mini Project 3
+(https://pfernandezdecordova1.github.io/miniproject3-miBooks/)
+
+- Elective project
+ https://pfernandezdecordova1.github.io/electiveminiproject
+
+- Final Project
+(https://github.com/pfernandezdecordova1/finalproject.git)
 
